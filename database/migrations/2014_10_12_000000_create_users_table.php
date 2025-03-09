@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('password');
-            $table->enum('role', ['resident','official'])->default('resident');
-            $table->rememberToken();
+            $table->enum('role', ['resident', 'official']);
+            $table->unsignedBigInteger('resident_id')->nullable();
+            $table->unsignedBigInteger('official_id')->nullable();
+            $table->foreign('resident_id')->references('id')->on('residents')->onDelete('cascade');
+            $table->foreign('official_id')->references('id')->on('officials')->onDelete('cascade');
             $table->timestamps();
         });
     }

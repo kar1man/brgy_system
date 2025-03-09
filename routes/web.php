@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ResidentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,6 @@ Route::post('/login/resident', [LoginController::class, 'residentLogin']);
 Route::post('/login/official', [LoginController::class, 'officialLogin']);
 
 
-
-
 // Logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
@@ -45,5 +44,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+Route::resource('residents', ResidentController::class);
+
+
+
 
 require __DIR__.'/auth.php';

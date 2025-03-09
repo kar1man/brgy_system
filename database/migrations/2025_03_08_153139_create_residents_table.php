@@ -15,14 +15,11 @@ return new class extends Migration
     {
         Schema::create('residents', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->unique();
-            $table->string('fullname');
+            $table->string('full_name');
             $table->date('birthdate');
             $table->string('address');
-            $table->string('contact_number');
+            $table->string('contact_number', 11);
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

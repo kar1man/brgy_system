@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Welcome to Resident Dashboard</h1>
+    <p>Welcome, {{ Auth::user()->resident->full_name }}!</p>
     <form action="{{ route('logout') }}" method="POST">
         @csrf
         <button type="submit">Logout</button>
