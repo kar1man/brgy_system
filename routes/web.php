@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ResidentController;
+use App\Http\Controllers\AnnouncementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +49,10 @@ Route::middleware('auth')->group(function () {
 
 
 Route::resource('residents', ResidentController::class);
+Route::resource('announcements', AnnouncementController::class);
 
-
+Route::get('resident/announcements', [AnnouncementController::class, 'residentIndex'])->name('resident.announcements.index');
+Route::get('resident/announcements/{announcement}', [AnnouncementController::class, 'residentShow'])->name('resident.announcements.show');
 
 
 require __DIR__.'/auth.php';

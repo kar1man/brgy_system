@@ -84,6 +84,8 @@ return [
 
     'locale' => 'en',
 
+    'timezone' => 'Asia/Manila',
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
