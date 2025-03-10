@@ -9,7 +9,6 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-   
     // Show Resident Login Page
     public function showResidentLogin() {
         return view('auth.resident-login');
@@ -28,24 +27,32 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt(array_merge($credentials, ['role' => 'resident']))) {
-            return view('resident.dashboard'); // Redirect to Resident Dashboard
+            return redirect()->route('resident.dashboard'); // Redirect to Resident Dashboard
         }
 
-        return back()->withErrors(['username' => 'Invalid Resident Credentials']);
+        return back()->withErrors(['credentials' => 'Invalid Resident Credentials']);
     }
 
-     // Official Login
-     public function officialLogin(Request $request) {
+    // Official Login
+    public function officialLogin(Request $request) {
         $credentials = $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
         ]);
 
         if (Auth::attempt(array_merge($credentials, ['role' => 'official']))) {
-            return view('official.dashboard'); // Redirect to Official Dashboard
+            return redirect()->route('official.dashboard'); // Redirect to Official Dashboard
         }
 
-        return back()->withErrors(['username' => 'Invalid Official Credentials']);
+        return back()->withErrors(['credentials' => 'Invalid Official Credentials']);
+    }
+
+    public function residentDashboard() {
+        return view('resident.dashboard');
+    }
+
+    public function officialDashboard() {
+        return view('official.dashboard');
     }
 
     /**

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    
     <style>
         body {
             display: flex;
@@ -70,8 +70,8 @@
 </head>
 <body>
     <div class="login-container">
-    <button class="btn btn-link" onclick="window.history.back()"><i class="bi bi-arrow-left" style="color: #6c757d;"></i></button> 
-        <h2>@yield('header', 'Login')</h2>
+    <button class="btn btn-link mt-3" onclick="window.history.back()"><i class="bi bi-arrow-left" style="color: #6c757d;"></i></button> 
+        <h2 class="text-center mb-2">@yield('header', 'Login')</h2>
         @yield('content')
     </div>
 

@@ -24,6 +24,11 @@ Route::get('/', function () {
     return view('landing');
 });
 
+// Resident Dashboard
+Route::get('resident/dashboard', [LoginController::class, 'residentDashboard'])->name('resident.dashboard');
+// Official Dashboard
+Route::get('official/dashboard', [LoginController::class, 'officialDashboard'])->name('official.dashboard');
+
 
 // Show login pages
 Route::get('/login/resident', [LoginController::class, 'showResidentLogin'])->name('resident.login');
