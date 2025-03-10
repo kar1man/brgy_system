@@ -9,7 +9,10 @@
             <label for="details">Details</label>
             <textarea class="form-control" name="details" rows="5" required></textarea>
         </div>
-       <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ route('resident.dashboard') }}" class="btn btn-secondary">Cancel</a>
+        </div>
     </form>
 </div>
 @endsection

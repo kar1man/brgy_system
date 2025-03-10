@@ -13,7 +13,10 @@
             <label for="purpose">Purpose</label>
             <textarea name="purpose" class="form-control" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ route('resident.dashboard') }}" class="btn btn-secondary">Cancel</a>
+        </div>
     </form>
 </div>
 @endsection

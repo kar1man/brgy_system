@@ -21,7 +21,10 @@
             <label for="contact_number">Contact</label>
             <input type="text" name="contact_number" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ route('resident.dashboard') }}" class="btn btn-secondary">Cancel</a>
+        </div>
     </form>
 </div>
 @endsection
