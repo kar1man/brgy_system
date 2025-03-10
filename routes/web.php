@@ -69,6 +69,7 @@ Route::get('resident/complaints', [ComplaintController::class, 'residentIndex'])
 Route::get('resident/complaints/create', [ComplaintController::class, 'create'])->name('resident.complaints.create');
 Route::post('resident/complaints', [ComplaintController::class, 'store'])->name('resident.complaints.store');
 Route::get('resident/complaints/{complaint}', [ComplaintController::class, 'residentShow'])->name('resident.complaints.show');
+Route::get('/official/complaints', [ComplaintController::class, 'index'])->name('official.complaints.index');
 
 // Appointments
 Route::resource('appointments', AppointmentController::class)->except(['create', 'store']);
