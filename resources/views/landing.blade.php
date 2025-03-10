@@ -65,7 +65,6 @@
     <div class="container">
         <h1>Barangay Information System (BIS)</h1>
         <h2>A streamlined system for residents and officials to manage barangay services efficiently.</h2>
-
         <!-- Resident Login Button -->
         <a href="{{ route('resident.login') }}" class="resident-btn">Resident Login</a>
 
