@@ -73,26 +73,26 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <a href="#" class="btn btn-primary btn-custom">File a Complaint</a>
+                        <a href="{{ route('resident.complaints.create') }}" class="btn btn-primary btn-custom">File a Complaint</a>
                     </div>
                     <div class="col-md-6">
-                        <a href="#" class="btn btn-outline-secondary btn-custom">View My Complaint</a>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <a href="#" class="btn btn-primary btn-custom">Book an Appointment</a>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="#" class="btn btn-outline-secondary btn-custom">View My Appointment</a>
+                        <a href="{{ route('resident.complaints.index') }}" class="btn btn-outline-secondary btn-custom">View My Complaint</a>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <a href="#" class="btn btn-primary btn-custom">Register a Business</a>
+                        <a href="{{ route('resident.appointments.create') }}" class="btn btn-primary btn-custom">Book an Appointment</a>
                     </div>
                     <div class="col-md-6">
-                        <a href="#" class="btn btn-outline-secondary btn-custom">View My Business Registration</a>
+                        <a href="{{ route('resident.appointments.index') }}" class="btn btn-outline-secondary btn-custom">View My Appointment</a>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <a href="{{ route('resident.businesses.create') }}" class="btn btn-primary btn-custom">Register a Business</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{ route('resident.businesses.index') }}" class="btn btn-outline-secondary btn-custom">View My Business Registration</a>
                     </div>
                 </div>
             </div>

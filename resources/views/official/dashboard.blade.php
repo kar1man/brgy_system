@@ -76,15 +76,15 @@
                         <a href="{{ route('residents.index') }}" class="btn btn-primary btn-custom">Manage Residents</a>
                     </div>
                     <div class="col-md-6">
-                        <a href="#" class="btn btn-outline-secondary btn-custom">Manage Complaints</a>
+                        <a href="{{ route('complaints.index') }}" class="btn btn-primary btn-custom">Manage Complaints</a>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <a href="#" class="btn btn-primary btn-custom">Manage Appointments</a>
+                        <a href="{{ route('appointments.index') }}" class="btn btn-primary btn-custom">Manage Appointments</a>
                     </div>
                     <div class="col-md-6">
-                        <a href="#" class="btn btn-outline-secondary btn-custom">Manage Business Registrations</a>
+                        <a href="{{ route('businesses.index') }}" class="btn btn-primary btn-custom">Manage Business Registrations</a>
                     </div>
                 </div>
                 

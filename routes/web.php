@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BusinessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,12 +50,33 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
+// Manage Residents
 Route::resource('residents', ResidentController::class);
-Route::resource('announcements', AnnouncementController::class);
 
+// Announcements
+Route::resource('announcements', AnnouncementController::class);
 Route::get('resident/announcements', [AnnouncementController::class, 'residentIndex'])->name('resident.announcements.index');
 Route::get('resident/announcements/{announcement}', [AnnouncementController::class, 'residentShow'])->name('resident.announcements.show');
 
+// Complaints
+Route::resource('complaints', ComplaintController::class)->except('create', 'store');
+Route::get('resident/complaints', [ComplaintController::class, 'residentIndex'])->name('resident.complaints.index');
+Route::get('resident/complaints/create', [ComplaintController::class, 'create'])->name('resident.complaints.create');
+Route::post('resident/complaints', [ComplaintController::class, 'store'])->name('resident.complaints.store');
+Route::get('resident/complaints/{complaint}', [ComplaintController::class, 'residentShow'])->name('resident.complaints.show');
+
+// Appointments
+Route::resource('appointments', AppointmentController::class)->except(['create', 'store']);
+Route::get('resident/appointments', [AppointmentController::class, 'residentIndex'])->name('resident.appointments.index');
+Route::get('resident/appointments/create', [AppointmentController::class, 'create'])->name('resident.appointments.create');
+Route::post('resident/appointments', [AppointmentController::class, 'store'])->name('resident.appointments.store');
+Route::get('resident/appointments/{appointment}', [AppointmentController::class, 'residentShow'])->name('resident.appointments.show');
+
+// Business Registrations
+Route::resource('businesses', BusinessController::class)->except(['create', 'store']);
+Route::get('resident/businesses', [BusinessController::class, 'residentIndex'])->name('resident.businesses.index');
+Route::get('resident/businesses/create', [BusinessController::class, 'create'])->name('resident.businesses.create');
+Route::post('resident/businesses', [BusinessController::class, 'store'])->name('resident.businesses.store');
+Route::get('resident/businesses/{business}', [BusinessController::class, 'residentShow'])->name('resident.businesses.show');
 
 require __DIR__.'/auth.php';
