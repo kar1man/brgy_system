@@ -1,0 +1,117 @@
+Database Name: barangay_db
+
+Table Name: announcements  
+	Columns:  
+		id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT  
+		title VARCHAR(255) NOT NULL  
+		content VARCHAR(255) NOT NULL  
+		date_posted TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP()  
+		official_id BIGINT(20) UNSIGNED NOT NULL  
+		created_at TIMESTAMP NULL DEFAULT NULL  
+		updated_at TIMESTAMP NULL DEFAULT NULL  
+	Constraints:  
+		FOREIGN KEY (official_id) REFERENCES officials(id) ON DELETE CASCADE  
+	Indexes:  
+		KEY announcements_official_id_foreign (official_id)  
+	Engine & Charset:  
+		ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci  
+		
+		
+		
+Table Name: appointments  
+	Columns:  
+		id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT  
+		resident_id BIGINT(20) UNSIGNED NOT NULL  
+		appointment_date DATETIME NOT NULL  
+		purpose TEXT NOT NULL  
+		status ENUM('Pending', 'Approved') NOT NULL DEFAULT 'Pending'  
+		created_at TIMESTAMP NULL DEFAULT NULL  
+		updated_at TIMESTAMP NULL DEFAULT NULL  
+	Constraints:  
+		FOREIGN KEY (resident_id) REFERENCES residents(id) ON DELETE CASCADE  
+	Indexes:  
+		KEY appointments_resident_id_foreign (resident_id)  
+	Engine & Charset:  
+		ENGINE = InnoDB AUTO_INCREMENT = 5 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci  
+
+
+Table Name: businesses  
+	Columns:  
+		id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT  
+		business_name VARCHAR(100) NOT NULL  
+		owner_name VARCHAR(100) NOT NULL  
+		address VARCHAR(255) NOT NULL  
+		contact_number VARCHAR(11) NOT NULL  
+		status ENUM('Pending', 'Approved', 'Rejected') NOT NULL DEFAULT 'Pending'  
+		resident_id BIGINT(20) UNSIGNED NOT NULL  
+		created_at TIMESTAMP NULL DEFAULT NULL  
+		updated_at TIMESTAMP NULL DEFAULT NULL  
+	Constraints:  
+		FOREIGN KEY (resident_id) REFERENCES residents(id) ON DELETE CASCADE  
+	Indexes:  
+		KEY businesses_resident_id_foreign (resident_id)  
+	Engine & Charset:  
+		ENGINE = InnoDB AUTO_INCREMENT = 5 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci  
+
+
+Table Name: complaints  
+	Columns:  
+		id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT  
+		details TEXT NOT NULL  
+		status ENUM('Pending', 'Resolved') NOT NULL DEFAULT 'Pending'  
+		resident_id BIGINT(20) UNSIGNED NOT NULL  
+		created_at TIMESTAMP NULL DEFAULT NULL  
+		updated_at TIMESTAMP NULL DEFAULT NULL  
+	Constraints:  
+		FOREIGN KEY (resident_id) REFERENCES residents(id) ON DELETE CASCADE  
+	Indexes:  
+		KEY complaints_resident_id_foreign (resident_id)  
+	Engine & Charset:  
+		ENGINE = InnoDB AUTO_INCREMENT = 6 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci  
+		
+
+Table Name: officials  
+	Columns:  
+		id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT  
+		full_name VARCHAR(255) NOT NULL  
+		position VARCHAR(255) NOT NULL  
+		contact_number VARCHAR(11) NOT NULL  
+		created_at TIMESTAMP NULL DEFAULT NULL  
+		updated_at TIMESTAMP NULL DEFAULT NULL  
+	Engine & Charset:  
+		ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci  
+		
+		
+Table Name: residents  
+	Columns:  
+		id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT  
+		full_name VARCHAR(255) NOT NULL  
+		birthdate DATE NOT NULL  
+		address VARCHAR(255) NOT NULL  
+		contact_number VARCHAR(11) NOT NULL  
+		created_at TIMESTAMP NULL DEFAULT NULL  
+		updated_at TIMESTAMP NULL DEFAULT NULL  
+	Engine & Charset:  
+		ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci  
+
+
+Table Name: users  
+	Columns:  
+		id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT  
+		username VARCHAR(255) NOT NULL UNIQUE  
+		password VARCHAR(255) NOT NULL  
+		role ENUM('resident', 'official') NOT NULL  
+		resident_id BIGINT(20) UNSIGNED DEFAULT NULL  
+		official_id BIGINT(20) UNSIGNED DEFAULT NULL  
+		created_at TIMESTAMP NULL DEFAULT NULL  
+		updated_at TIMESTAMP NULL DEFAULT NULL  
+	Constraints:  
+		FOREIGN KEY (resident_id) REFERENCES residents(id) ON DELETE CASCADE  
+		FOREIGN KEY (official_id) REFERENCES officials(id) ON DELETE CASCADE  
+	Indexes:  
+		UNIQUE KEY users_username_unique (username)  
+		KEY users_resident_id_foreign (resident_id)  
+		KEY users_official_id_foreign (official_id)  
+	Engine & Charset:  
+		ENGINE = InnoDB AUTO_INCREMENT = 10 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci  
+
